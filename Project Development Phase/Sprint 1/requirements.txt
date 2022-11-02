@@ -1,0 +1,4 @@
+django
+knox
+djangorestframework
+ibm-db
