@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Home Page</title>
+    </head>
+    <body>
+        <h3>Welcome {{request.user}}</h3><br><br>
+        <a href="/logout"><button>Logout</button></a>
+        <h5>Search for a news</h5>
+        <form action="/home" method="post">
+            {% csrf_token %}
+            <input type="search" name="news">
+            <button type="submit" role="search">search</button>
+        </form> 
+        {% if articles %}
+        <br><h3>Search Results</h3><br>
+            <table>
+                <tr>
+                    <th>Headline</th>
+                    <th>Headline image</th>
+                    <th>Link to the news</th>
+                </tr>
+                {% for article in articles %}
+                    <tr>
+                        <td>{{article.title}}</td>
+                        <td><img src={{article.urlToImage}} alt="{{article.title}}" width="300" height="300"></td>
+                        <td><a href="{{article.url}}" target="_blank">Go to news</a></td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% endif %}
+    </body>
+</html>
