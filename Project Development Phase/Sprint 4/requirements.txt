@@ -1,0 +1,7 @@
+django
+djangorestframework
+knox
+django-rest-knox
+ibm-db
+python-dotenv
+newsapi-python
