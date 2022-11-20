@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: django-deployment
+  labels:
+    app: news-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: news-app
+  template:
+    metadata:
+      labels:
+        app: news-app
+    spec:
+      containers:
+      - name: news-app
+        image: uk.icr.io/news-app-ns/news-app-repo@sha256:fb51a13f7a82961bb75caf62ea697f5313a7479fade9e11991a2f9c451fc14a6
+        ports:
+        - containerPort: 8000
